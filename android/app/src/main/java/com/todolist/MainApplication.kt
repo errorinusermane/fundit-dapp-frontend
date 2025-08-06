@@ -1,4 +1,4 @@
-package com.fundit_dapp_frontend
+package com.todolist
 
 import android.app.Application
 import com.facebook.react.PackageList

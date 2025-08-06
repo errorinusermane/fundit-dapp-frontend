@@ -1,8 +1,13 @@
-export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-20.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home -v 20)
+
+export ANDROID_HOME=/Users/susie/Library/Android/sdk
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
+
 source ~/.zshrc
+
+npx react-native doctor
 
 # 의존성 밀고 다시 하고 싶을 때
 # node_modules가 의존성 폴더고,
@@ -39,3 +44,30 @@ rm -rf /tmp/metro-*
 rm -rf android/app/build
 rm -rf ~/.pnpm-store
 npm install
+
+# 오류: watchman 권한 없다고 뜰 때
+- npx react-native --version
+- 위 코드로 버전과
+- package.json의 패키지들 버전 호환되고 있는지 확인
+- 아니라면 npm install 시 업데이트하기
+- 그리고 아래 다시 빌드
+
+watchman watch-del-all || true
+rm -rf node_modules
+rm -rf android/.gradle
+rm -rf android/build
+rm -rf android/app/build
+rm -rf android/.idea
+rm -rf android/.cxx
+rm -rf android/local.properties
+rm -f yarn.lock package-lock.json
+
+npm install
+
+cd android && ./gradlew clean && cd ..
+
+npx react-native start --reset-cache
+
+sudo chmod -R 755 ~/Desktop/Temp_Laptop3
+
+npx react-native run-android

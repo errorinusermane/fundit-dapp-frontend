@@ -14,11 +14,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-native",
-    "baseUrl": ".", // 루트 기준
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
       "@shared/*": ["shared/*"]
     },
-    "types": ["node"] // jest 제거
+    "types": ["react-native", "node"]
   }
 }
