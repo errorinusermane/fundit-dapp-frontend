@@ -14,6 +14,8 @@ npm install
 
 npx react-native run-android
 
+# ========================================== #
+
 # 실행할 때 순서
 1. 패키지.json : 의존성 확인함
 2. babel + ts config : 타입, 컴파일 관련 파일. ts<->js간 타입 확인하는 것. 그래서 전부 json 파일로 작성되는 것이고, babel이 js 파일인 것.
@@ -23,3 +25,17 @@ npx react-native run-android
 5. App.tsx : 여기서부터 ts 파일이 됨. UI entry point.
 6. 만약 네비게이션을 따로 둔다면 Navigation.tsx
 7. 이후 네비게이션에서 작성된 대로 파일 이동하게 됨.
+
+# ========================================== #
+
+# 실행 오래 걸릴 때
+rm -rf android/build
+rm -rf android/app/build
+
+watchman watch-del-all
+rm -rf node_modules
+rm -rf yarn.lock package-lock.json pnpm-lock.yaml
+rm -rf /tmp/metro-*
+rm -rf android/app/build
+rm -rf ~/.pnpm-store
+npm install
