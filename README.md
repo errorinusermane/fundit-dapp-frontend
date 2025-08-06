@@ -17,7 +17,7 @@ npx react-native run-android
 # 실행할 때 순서
 1. 패키지.json : 의존성 확인함
 2. babel + ts config : 타입, 컴파일 관련 파일. ts<->js간 타입 확인하는 것. 그래서 전부 json 파일로 작성되는 것이고, babel이 js 파일인 것.
-3. metro : 실행 관련 파일. 마찬가지로 얘도 js 파일인 것. 기본익 js라서.
+3. metro : 실행 관련 파일. 마찬가지로 얘도 js 파일인 것. 기본이 js라서. 수천 개의 파일 (컴포넌트, 이미지, 모듈 등)을 모아서 하나의 '번들'로 만들어줌. 그래서 번들러 관련 파일이라고 함.
 # 이후부터 파일 실행됨
 4. index.js : JS entry point.
 5. App.tsx : 여기서부터 ts 파일이 됨. UI entry point.
